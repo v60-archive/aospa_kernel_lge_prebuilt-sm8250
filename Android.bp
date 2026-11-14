@@ -1,0 +1,50 @@
+//
+// SPDX-FileCopyrightText: Paranoid Android
+// SPDX-License-Identifier: Apache-2.0
+//
+
+// Userspace headers of the prebuilt msm-5.15 kernel for the vendor HALs.
+// This repo has no Soong namespace on purpose: hardware/qcom/display,
+// dataservices and recovery-ext look these modules up from the root
+// namespace. kernel-headers/include is shared by both arches, the per-arch
+// dirs hold the headers that differ (mostly asm/) and come first.
+
+cc_library_headers {
+    name: "qti_kernel_headers",
+    vendor: true,
+    recovery_available: true,
+    arch: {
+        arm: {
+            export_include_dirs: [
+                "kernel-headers/arm",
+                "kernel-headers/include",
+            ],
+        },
+        arm64: {
+            export_include_dirs: [
+                "kernel-headers/arm64",
+                "kernel-headers/include",
+            ],
+        },
+    },
+}
+
+cc_library_headers {
+    name: "generated_kernel_headers",
+    vendor: true,
+    recovery_available: true,
+    arch: {
+        arm: {
+            export_include_dirs: [
+                "kernel-headers/arm",
+                "kernel-headers/include",
+            ],
+        },
+        arm64: {
+            export_include_dirs: [
+                "kernel-headers/arm64",
+                "kernel-headers/include",
+            ],
+        },
+    },
+}
